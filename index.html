@@ -1,32 +1,90 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>techstuff</title>
 
-  <title>techstuff.ro</title>
-
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <main class="card">
-  <h1>salutari, eu sunt Mihnea :P</h1>
-  <p>acesta e site-ul meu pentru tech :3</p>
 
-  <h2>lucrurile care imi plac:</h2>
-  <ul>
-    <li>telefoanele</li>
-    <li>jocurile</li>
-    <li>pisicile</li>
-    <li>sa dorm</li>
-  </ul>
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            techstuff.ro
+        </div>
 
-  <button id="salutbutton">Apasă aici</button>
-  <p id="mesaj"></p>
-  </main>
+        <ul class="nav-links">
+            <li><a href="#">Știri</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li class="dropdown">
 
-  <script src="script.js"></script>
+    <a href="#">Dispozitive ▼</a>
+
+    <ul class="dropdown-menu">
+
+        <li class="dropdown-right">
+
+            <a href="#">Telefoane ▶</a>
+
+            <ul class="dropdown-menu-right">
+
+                <li><a href="#">Galaxy S</a></li>
+                <li><a href="#">Galaxy A</a></li>
+                <li><a href="#">Galaxy Z</a></li>
+                <li><a href="#">Galaxy M</a></li>
+                <li><a href="#">Galaxy Note</a></li>
+
+            </ul>
+
+        </li>
+
+        <li><a href="#">Tablete</a></li>
+
+        <li><a href="#">Wearables</a></li>
+
+    </ul>
+</li>
+            <li><a href="#">Mai multe</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>BUN VENIT! :D</h1>
+
+    <div class="line"></div>
+</section>
+
+<section class="news">
+
+    <h2>Ultimul update - 22 iulie 2026, ora 23:00</h2>
+
+    <article class="news-card">
+
+        <img
+    src="images/construction.png"
+    alt="Under Construction"
+    class="news-image">
+
+        <div class="text">
+
+            <h3>Under Construction!</h3>
+
+            <p>
+         Ne portam site-ul de la Google Sites la un domeniu propriu, techstuff.ro. Asta inseamna ca o sa avem un site mai smecher :D
+
+            
+            </p>
+
+        </div>
+
+    </article>
+
+</section>
+
+<script src="script.js"></script>
 
 </body>
 </html>
