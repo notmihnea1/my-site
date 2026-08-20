@@ -1,176 +1,320 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:Arial,sans-serif;
-    background:#ffffff;
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #111111;
 }
 
-.navbar{
-    background:#000;
-    color:white;
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+/* =========================
+   NAVBAR
+========================= */
 
-    padding:20px 50px;
+.navbar {
+    background: #000000;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 16px 20px;
+    gap: 15px;
 }
 
-.logo{
-    font-size:28px;
-    font-weight:bold;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.nav-links{
-    list-style:none;
-    display:flex;
-    gap:35px;
+.nav-links {
+    list-style: none;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 18px;
 }
 
-.nav-links a{
-    color:white;
-    text-decoration:none;
+.nav-links li {
+    position: relative;
 }
 
-.hero{
-    background:#000;
-    color:white;
-
-    text-align:center;
-
-    padding:80px 20px;
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
 }
 
-.hero h1{
-    font-size:72px;
-    margin-bottom:30px;
+
+/* =========================
+   MAIN DROPDOWN
+========================= */
+
+.dropdown-menu {
+    display: none;
+
+    position: absolute;
+    top: 100%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: white;
+
+    min-width: 180px;
+
+    padding: 8px 0;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+
+    z-index: 100;
 }
 
-.line{
-    width:500px;
-    max-width:80%;
-    height:6px;
-
-    margin:auto;
-
-    background:#1e88ff;
+.dropdown-menu li {
+    list-style: none;
 }
 
-.news{
-    max-width:1000px;
+.dropdown-menu a {
+    display: block;
 
-    margin:70px auto;
+    padding: 10px 15px;
 
-    padding:0 20px;
+    color: #222222;
+
+    white-space: nowrap;
 }
 
-.news h2{
-    font-size:48px;
-    margin-bottom:40px;
+.dropdown-menu a:hover {
+    background: #eeeeee;
 }
 
-.news-card{
-
-    display:flex;
-
-    gap:40px;
-
-    align-items:flex-start;
+/* Show main dropdown */
+.dropdown:hover > .dropdown-menu {
+    display: block;
 }
 
-.news-image{
-    width:300px;
-    height:200px;
-    object-fit:contain;
+
+/* =========================
+   TELEFOANE SUBMENU
+========================= */
+
+.dropdown-right {
+    position: relative;
 }
 
-.text h3{
+.dropdown-menu-right {
+    display: none;
 
-    font-size:36px;
+    position: absolute;
 
-    margin-bottom:20px;
+    top: 0;
+    left: 100%;
+
+    background: white;
+
+    min-width: 180px;
+
+    padding: 8px 0;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+
+    z-index: 101;
 }
 
-.text p{
-
-    font-size:20px;
-
-    line-height:1.6;
-}
-.dropdown{
-    position:relative;
+.dropdown-menu-right li {
+    list-style: none;
 }
 
-.dropdown-menu{
+.dropdown-menu-right a {
+    display: block;
 
-    display:none;
+    padding: 10px 15px;
 
-    position:absolute;
-
-    top:100%;
-    left:0;
-
-    list-style:none;
-
-    background:white;
-
-    min-width:220px;
-
-    padding:10px 0;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.2);
+    color: #222222;
 }
 
-.dropdown-menu li a{
-
-    display:block;
-
-    padding:12px 18px;
-
-    color:black;
-
-    text-decoration:none;
+.dropdown-menu-right a:hover {
+    background: #eeeeee;
 }
 
-.dropdown-menu li a:hover{
-
-    background:#f3f3f3;
+.dropdown-right:hover > .dropdown-menu-right {
+    display: block;
 }
 
-.dropdown:hover .dropdown-menu{
 
-    display:block;
-}
-.dropdown-right{
+/* =========================
+   HERO
+========================= */
 
-    position:relative;
-}
+.hero {
+    background: #000000;
+    color: white;
 
-.dropdown-menu-right{
+    text-align: center;
 
-    display:none;
-
-    position:absolute;
-
-    top:0;
-    left:100%;
-
-    list-style:none;
-
-    background:white;
-
-    min-width:220px;
-
-    padding:10px 0;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.2);
+    padding: 50px 20px;
 }
 
-.dropdown-right:hover .dropdown-menu-right{
+.hero h1 {
+    font-size: 36px;
+    line-height: 1.1;
+}
 
-    display:block;
+.line {
+    width: 80%;
+    max-width: 500px;
+
+    height: 5px;
+
+    background: #168cff;
+
+    margin: 25px auto 0;
+}
+
+
+/* =========================
+   NEWS (Black Section)
+========================= */
+
+.news {
+    width: 100%;
+    background: #000000;
+    color: #ffffff;
+
+    padding: 35px 20px;
+
+    /* Full-width blue divider line */
+    border-top: 5px solid #168cff;
+}
+
+.news-card {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.text {
+    text-align: center;
+}
+
+.text h3 {
+    font-size: 24px;
+
+    margin-bottom: 15px;
+}
+
+.text p {
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   FOOTER (White Section)
+========================= */
+
+.site-footer {
+    background: #ffffff;
+    color: #111111;
+
+    text-align: center;
+
+    padding: 25px 20px;
+
+    margin-top: 0;
+}
+
+.site-footer > p {
+    font-size: 14px;
+
+    margin-bottom: 10px;
+}
+
+
+/* Version dropdown */
+
+.updates {
+    max-width: 400px;
+
+    margin: 0 auto;
+}
+
+.updates summary {
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    padding: 5px;
+
+    list-style-position: inside;
+}
+
+.updates ul {
+    list-style: none;
+
+    margin-top: 8px;
+}
+
+.updates li {
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* Construction icon */
+
+.site-footer .construction {
+    font-size: 20px;
+
+    margin-top: 15px;
+}
+
+
+/* =========================
+   DESKTOP OVERRIDES
+========================= */
+
+@media (min-width: 769px) {
+
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .hero {
+        padding: 80px 20px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .news {
+        padding: 50px 20px;
+    }
+
+    .text h3 {
+        font-size: 28px;
+    }
+
+    .text p {
+        font-size: 18px;
+    }
 }
