@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>techstuff.ro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header-container">
+    <div class="search-pill">
+        <button class="hamburger-btn" aria-label="Toggle menu" onclick="toggleMenu()">
+            <svg width="24" height="18" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line x1="0" y1="2" x2="24" y2="2" />
+                <line x1="0" y1="9" x2="24" y2="9" />
+                <line x1="0" y1="16" x2="24" y2="16" />
+            </svg>
+        </button>
+        <div class="logo">
+            techstuff
+        </div>
+    </div>
+
+    <!-- Dropdown menu triggered by the hamburger button -->
+    <nav class="navbar-dropdown" id="navMenu">
+        <ul class="nav-links">
+            <li><a href="#">Știri</a></li>
+            <li><a href="#">Reviews</a></li>
+
+            <li class="dropdown">
+                <button class="dropdown-btn" onclick="toggleSubmenu(event)">Dispozitive ▼</button>
+
+                <ul class="dropdown-menu">
+                    <li class="dropdown-right">
+                        <button class="dropdown-btn" onclick="toggleSubmenu(event)">Telefoane ▶</button>
+
+                        <ul class="dropdown-menu-right">
+                            <li><a href="#">Galaxy S</a></li>
+                            <li><a href="#">Galaxy A</a></li>
+                            <li><a href="#">Galaxy Z</a></li>
+                            <li><a href="#">Galaxy M</a></li>
+                            <li><a href="#">Galaxy Note</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">Tablete</a></li>
+                    <li><a href="#">Wearables</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <button class="dropdown-btn" onclick="toggleSubmenu(event)">Mai multe ▼</button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">built by mihnea</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>BUN VENIT! :D</h1>
+</section>
+
+<section class="news">
+    <article class="news-card">
+        <div class="text">
+            <h3>Under Construction!</h3>
+            <p>
+                Ne portăm site-ul de la Google Sites la un domeniu propriu,
+                techstuff.ro. Asta înseamnă că o să avem un site mai șmecher :P
+            </p>
+        </div>
+    </article>
+</section>
+
+<footer class="site-footer">
+    <p class="update-date">Ultima actualizare: 8 Septembrie 2026</p>
+
+    <details class="updates">
+        <summary>beta version 0.0.3</summary>
+        <div class="updates-content">
+            <p>lucruri noi adaugate:</p>
+            <p>- schimbat design-ul putin</p>
+            <p>- rearanjat codul pentru performanta mai stabila</p>
+            <p>- adaugat bug-uri sa le rezolv mai incolo</p>
+        </div>
+    </details>
+
+    <p class="construction">🚧</p>
+</footer>
+
+<script>
+    function toggleMenu() {
+        const nav = document.getElementById('navMenu');
+        nav.classList.toggle('active');
+    }
+
+    function toggleSubmenu(event) {
+        event.stopPropagation();
+        const parentLi = event.currentTarget.parentElement;
+        parentLi.classList.toggle('open');
+    }
+</script>
+
+</body>
+</html>

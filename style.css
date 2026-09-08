@@ -1,0 +1,271 @@
+/* =========================
+   RESET & DARK THEME BASE
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+}
+
+
+/* =========================
+   HEADER & SEARCH PILL
+========================= */
+
+.header-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+    background: #0a0a0a;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-pill {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 52px;
+    background: #141414;
+    border: 2px solid #168cff;
+    border-radius: 30px;
+    padding: 0 16px;
+    box-shadow: 0 0 12px rgba(22, 140, 255, 0.2);
+}
+
+.hamburger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    color: #168cff;
+    transition: color 0.2s ease;
+}
+
+.hamburger-btn:hover {
+    color: #ffffff;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-left: 16px;
+    letter-spacing: -0.5px;
+}
+
+
+/* =========================
+   HAMBURGER DROPDOWN MENU
+========================= */
+
+.navbar-dropdown {
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+    background: #141414;
+    border: 1px solid #168cff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+
+.navbar-dropdown.active {
+    display: block;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a,
+.dropdown-btn {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-family: inherit;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover,
+.dropdown-btn:hover {
+    color: #168cff;
+    background: #1e1e1e;
+}
+
+
+/* Submenu Dropdowns (Click Activated) */
+
+.dropdown-menu {
+    display: none;
+    background: #1e1e1e;
+    padding: 8px 12px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border-left: 2px solid #168cff;
+}
+
+.dropdown-menu a {
+    color: #dddddd;
+    padding: 6px 8px;
+}
+
+/* Open submenus via JS class */
+.dropdown.open > .dropdown-menu {
+    display: block;
+}
+
+.dropdown-right {
+    position: relative;
+}
+
+.dropdown-menu-right {
+    display: none;
+    padding-left: 12px;
+    margin-top: 4px;
+    border-left: 2px solid #168cff;
+}
+
+.dropdown-right.open > .dropdown-menu-right {
+    display: block;
+}
+
+
+/* =========================
+   HERO & NEWS SECTIONS
+========================= */
+
+.hero {
+    background: #0a0a0a;
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.news {
+    width: 100%;
+    background: #0a0a0a;
+    padding: 20px;
+}
+
+.news-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #141414;
+    border: 1px solid #222222;
+    border-top: 3px solid #168cff;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.text {
+    text-align: center;
+}
+
+.text h3 {
+    font-size: 22px;
+    color: #168cff;
+    margin-bottom: 12px;
+}
+
+.text p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #cccccc;
+}
+
+
+/* =========================
+   FOOTER (CENTERED)
+========================= */
+
+.site-footer {
+    background: #0a0a0a;
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.update-date {
+    font-size: 14px;
+    color: #888888;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.updates {
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+}
+
+.updates summary {
+    cursor: pointer;
+    font-size: 14px;
+    color: #168cff;
+    padding: 6px 12px;
+    user-select: none;
+    display: inline-block;
+}
+
+.updates summary:hover {
+    text-decoration: underline;
+}
+
+.updates-content {
+    background: #141414;
+    border: 1px solid #168cff;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 8px;
+    text-align: left;
+}
+
+.updates-content p {
+    font-size: 14px;
+    color: #dddddd;
+    line-height: 1.6;
+}
+
+.site-footer .construction {
+    font-size: 22px;
+    margin-top: 20px;
+}
