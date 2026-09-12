@@ -5,7 +5,291 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>techstuff.ro</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            background: url('blunatur.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .chevron-icon {
+            width: 18px;
+            height: 18px;
+            stroke: rgba(255, 255, 255, 0.85);
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dropdown.open > .dropdown-btn .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-right.open > .dropdown-btn .chevron-icon {
+            transform: rotate(90deg);
+        }
+
+        .header-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 15px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .search-pill {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 52px;
+            background: rgba(20, 20, 20, 0.45);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            border-radius: 30px;
+            padding: 0 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .hamburger-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            color: #ffffff;
+            transition: opacity 0.2s ease;
+        }
+
+        .hamburger-btn:hover {
+            opacity: 0.8;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-left: 14px;
+            letter-spacing: -0.4px;
+        }
+
+        .navbar-dropdown {
+            display: none;
+            position: absolute;
+            top: 78px;
+            left: 15px;
+            right: 15px;
+            width: calc(100% - 30px);
+            background: rgba(25, 25, 25, 0.55);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 28px;
+            padding: 16px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+        }
+
+        .navbar-dropdown.active {
+            display: block;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a,
+        .dropdown-btn {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px 14px;
+            border-radius: 14px;
+            transition: background 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .dropdown-menu {
+            display: none;
+            background: rgba(0, 0, 0, 0.35);
+            padding: 8px;
+            margin-top: 6px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-menu a {
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+        }
+
+        .dropdown.open > .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-right {
+            position: relative;
+        }
+
+        .dropdown-menu-right {
+            display: none;
+            padding: 6px;
+            margin-top: 4px;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .dropdown-right.open > .dropdown-menu-right {
+            display: block;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 30px 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .news {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .news-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(20, 20, 20, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1.5px solid rgba(255, 255, 255, 0.18);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .text {
+            text-align: center;
+        }
+
+        .text h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #4da6ff;
+            margin-bottom: 12px;
+        }
+
+        .text p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+
+        .site-footer {
+            text-align: center;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .update-date {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.65);
+            margin-bottom: 12px;
+        }
+
+        .updates {
+            width: 100%;
+            max-width: 380px;
+            background: rgba(20, 20, 20, 0.45);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .updates summary {
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            color: #ffffff;
+            padding: 12px 18px;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+        }
+
+        .updates summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .updates[open] summary .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        .updates-content {
+            padding: 12px 18px 16px;
+            text-align: left;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .updates-content p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .site-footer .construction {
+            font-size: 22px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,7 +297,7 @@
 <header class="header-container">
     <div class="search-pill">
         <button class="hamburger-btn" aria-label="Toggle menu" onclick="toggleMenu()">
-            <svg width="24" height="18" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <svg width="22" height="16" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
                 <line x1="0" y1="2" x2="24" y2="2" />
                 <line x1="0" y1="9" x2="24" y2="9" />
                 <line x1="0" y1="16" x2="24" y2="16" />
@@ -24,18 +308,27 @@
         </div>
     </div>
 
-    <!-- Dropdown menu triggered by the hamburger button -->
     <nav class="navbar-dropdown" id="navMenu">
         <ul class="nav-links">
             <li><a href="#">Știri</a></li>
             <li><a href="#">Reviews</a></li>
 
             <li class="dropdown">
-                <button class="dropdown-btn" onclick="toggleSubmenu(event)">Dispozitive ▼</button>
+                <button class="dropdown-btn" onclick="toggleSubmenu(event)">
+                    <span>Dispozitive</span>
+                    <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
 
                 <ul class="dropdown-menu">
                     <li class="dropdown-right">
-                        <button class="dropdown-btn" onclick="toggleSubmenu(event)">Telefoane ▶</button>
+                        <button class="dropdown-btn" onclick="toggleSubmenu(event)">
+                            <span>Telefoane</span>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
 
                         <ul class="dropdown-menu-right">
                             <li><a href="#">Galaxy S</a></li>
@@ -52,7 +345,12 @@
             </li>
 
             <li class="dropdown">
-                <button class="dropdown-btn" onclick="toggleSubmenu(event)">Mai multe ▼</button>
+                <button class="dropdown-btn" onclick="toggleSubmenu(event)">
+                    <span>Mai multe</span>
+                    <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
                 <ul class="dropdown-menu">
                     <li><a href="#">built by mihnea</a></li>
                 </ul>
@@ -78,15 +376,22 @@
 </section>
 
 <footer class="site-footer">
-    <p class="update-date">Ultima actualizare: 8 Septembrie 2026</p>
+    <p class="update-date">Ultima actualizare: 12 Septembrie 2026</p>
 
     <details class="updates">
-        <summary>beta version 0.0.3</summary>
+        <summary>
+            <span>Versiunea Beta 0.0.4</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </summary>
         <div class="updates-content">
             <p>lucruri noi adaugate:</p>
-            <p>- schimbat design-ul putin</p>
-            <p>- rearanjat codul pentru performanta mai stabila</p>
-            <p>- adaugat bug-uri sa le rezolv mai incolo</p>
+            <p>- schimbat design-ul si fontul global</p>
+            <p>- meniul de navigare si update-urile au design stil liquid glass</p>
+            <p>- adaugat fundal dinamic</p>
+            <p>- redesenat submeniurile de dropdown de la zona "dispozitive"</p>
+            <p>- adaugat bugs-uri pentru a le rezolva un urmatorul release</p>
         </div>
     </details>
 

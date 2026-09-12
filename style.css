@@ -1,33 +1,40 @@
-/* =========================
-   RESET & DARK THEME BASE
-========================= */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #0a0a0a;
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    background: url('blunatur.jpg') no-repeat center center fixed;
+    background-size: cover;
     color: #ffffff;
+    overflow-x: hidden;
+}
+.chevron-icon {
+    width: 18px;
+    height: 18px;
+    stroke: rgba(255, 255, 255, 0.85);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.dropdown.open > .dropdown-btn .chevron-icon {
+    transform: rotate(180deg);
+}
 
-/* =========================
-   HEADER & SEARCH PILL
-========================= */
-
+.dropdown-right.open > .dropdown-btn .chevron-icon {
+    transform: rotate(90deg);
+}
 .header-container {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px 15px;
-    background: #0a0a0a;
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
 }
 
@@ -36,11 +43,13 @@ body {
     align-items: center;
     width: 100%;
     height: 52px;
-    background: #141414;
-    border: 2px solid #168cff;
+    background: rgba(20, 20, 20, 0.45);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
     border-radius: 30px;
     padding: 0 16px;
-    box-shadow: 0 0 12px rgba(22, 140, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .hamburger-btn {
@@ -51,37 +60,36 @@ body {
     align-items: center;
     justify-content: center;
     padding: 6px;
-    color: #168cff;
-    transition: color 0.2s ease;
+    color: #ffffff;
+    transition: opacity 0.2s ease;
 }
 
 .hamburger-btn:hover {
-    color: #ffffff;
+    opacity: 0.8;
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 22px;
+    font-weight: 600;
     color: #ffffff;
-    margin-left: 16px;
-    letter-spacing: -0.5px;
+    margin-left: 14px;
+    letter-spacing: -0.4px;
 }
-
-
-/* =========================
-   HAMBURGER DROPDOWN MENU
-========================= */
-
 .navbar-dropdown {
     display: none;
-    width: 100%;
-    margin-top: 10px;
-    background: #141414;
-    border: 1px solid #168cff;
-    border-radius: 12px;
+    position: absolute;
+    top: 78px;
+    left: 15px;
+    right: 15px;
+    width: calc(100% - 30px);
+    background: rgba(25, 25, 25, 0.55);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 28px;
     padding: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-    z-index: 100;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    z-index: 1000;
 }
 
 .navbar-dropdown.active {
@@ -92,11 +100,12 @@ body {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 6px;
 }
 
 .nav-links li {
     position: relative;
+    list-style: none;
 }
 
 .nav-links a,
@@ -104,42 +113,50 @@ body {
     color: #ffffff;
     text-decoration: none;
     font-size: 16px;
-    display: block;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     text-align: left;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 6px 8px;
-    border-radius: 6px;
-    font-family: inherit;
-    transition: background 0.2s ease, color 0.2s ease;
+    padding: 10px 14px;
+    border-radius: 14px;
+    transition: background 0.2s ease;
 }
 
 .nav-links a:hover,
 .dropdown-btn:hover {
-    color: #168cff;
-    background: #1e1e1e;
+    background: rgba(255, 255, 255, 0.12);
 }
 
+.dropdown-menu,
+.dropdown-menu-right {
+    list-style: none;
+    padding-left: 0;
+}
 
-/* Submenu Dropdowns (Click Activated) */
+.dropdown-menu li,
+.dropdown-menu-right li {
+    list-style-type: none;
+}
 
 .dropdown-menu {
     display: none;
-    background: #1e1e1e;
-    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 8px;
     margin-top: 6px;
-    border-radius: 8px;
-    border-left: 2px solid #168cff;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dropdown-menu a {
-    color: #dddddd;
-    padding: 6px 8px;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 8px 12px;
 }
 
-/* Open submenus via JS class */
 .dropdown.open > .dropdown-menu {
     display: block;
 }
@@ -150,47 +167,44 @@ body {
 
 .dropdown-menu-right {
     display: none;
-    padding-left: 12px;
+    padding: 6px;
     margin-top: 4px;
-    border-left: 2px solid #168cff;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .dropdown-right.open > .dropdown-menu-right {
     display: block;
 }
 
-
-/* =========================
-   HERO & NEWS SECTIONS
-========================= */
-
 .hero {
-    background: #0a0a0a;
-    color: #ffffff;
     text-align: center;
-    padding: 40px 20px 20px;
+    padding: 30px 20px 20px;
 }
 
 .hero h1 {
     font-size: 36px;
-    font-weight: bold;
-    letter-spacing: 1px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 .news {
     width: 100%;
-    background: #0a0a0a;
     padding: 20px;
 }
 
 .news-card {
-    max-width: 700px;
+    max-width: 500px;
     margin: 0 auto;
-    background: #141414;
-    border: 1px solid #222222;
-    border-top: 3px solid #168cff;
-    border-radius: 12px;
-    padding: 24px;
+    background: rgba(20, 20, 20, 0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
 }
 
 .text {
@@ -199,69 +213,75 @@ body {
 
 .text h3 {
     font-size: 22px;
-    color: #168cff;
+    font-weight: 600;
+    color: #4da6ff;
     margin-bottom: 12px;
 }
 
 .text p {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.6;
-    color: #cccccc;
+    color: rgba(255, 255, 255, 0.85);
 }
-
-
-/* =========================
-   FOOTER (CENTERED)
-========================= */
-
 .site-footer {
-    background: #0a0a0a;
-    color: #ffffff;
     text-align: center;
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .update-date {
     font-size: 14px;
-    color: #888888;
+    color: #000000;
+    font-weight: 600;
     margin-bottom: 12px;
-    text-align: center;
 }
 
 .updates {
     width: 100%;
-    max-width: 360px;
-    text-align: center;
+    max-width: 380px;
+    background: rgba(20, 20, 20, 0.45);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .updates summary {
     cursor: pointer;
-    font-size: 14px;
-    color: #168cff;
-    padding: 6px 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+    padding: 12px 18px;
     user-select: none;
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
 }
 
-.updates summary:hover {
-    text-decoration: underline;
+.updates summary::-webkit-details-marker {
+    display: none;
+}
+
+.updates[open] summary .chevron-icon {
+    transform: rotate(180deg);
 }
 
 .updates-content {
-    background: #141414;
-    border: 1px solid #168cff;
-    border-radius: 8px;
-    padding: 12px 16px;
-    margin-top: 8px;
+    padding: 12px 18px 16px;
     text-align: left;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .updates-content p {
     font-size: 14px;
-    color: #dddddd;
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.6;
 }
 
